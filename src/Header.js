@@ -1,7 +1,11 @@
 import React from 'react';
 
 export function Header(props) {
-  const clock = Date().toLocaleString();
+  const [clock, setClock] = React.useState(Date().toLocaleString());
+  setInterval(() => {
+    setClock(Date().toLocaleString());
+  }, 1000);
+
   return (
     <h1>
       Hello {props.name} {clock}
