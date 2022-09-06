@@ -1,13 +1,23 @@
-import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import App from './App';
+function Header() {
+  const clock = Date().toLocaleString();
+  return <h1>Hello {clock}</h1>;
+}
+
+function Page() {
+  return (
+    <>
+      <Header />
+      <p>Hai</p>
+    </>
+  );
+}
 
 const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+const root = ReactDOM.createRoot(rootElement);
 
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+setInterval(function () {
+  root.render(Page());
+}, 1000);
